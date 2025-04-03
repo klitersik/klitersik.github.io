@@ -1,11 +1,697 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>My Website</title>
-</head>
-<body>
-  <h1>Welcome to my website!</h1>
-  <p>I am a developer specializing in web scraping and automation.</p>
-  <a href="/blog.html">Visit my blog</a>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>klitersik - Automation & Web Scraping</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              // New Dark Palette
+              primary: "#00ADB5", // Teal accent
+              'dark-bg': "#222831", // Deep dark background
+              'dark-card': "#393E46", // Lighter dark for cards/sections
+              'light-text': "#EEEEEE", // Light text
+              'secondary-text': "#adb5bd", // Slightly dimmer text
+              secondary: "#393E46", // Keep for compatibility or specific use
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+          font-family: 'Inter', sans-serif;
+      }
+      /* Custom Checkbox for dark mode - Removed as form is removed, kept for potential future use */
+      .custom-checkbox {
+          appearance: none;
+          -webkit-appearance: none;
+          height: 20px;
+          width: 20px;
+          background-color: #393E46; /* dark-card */
+          border: 2px solid #6b7280; /* gray-500 */
+          border-radius: 4px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .custom-checkbox:checked {
+          background-color: #00ADB5; /* primary */
+          border-color: #00ADB5; /* primary */
+      }
+      .custom-checkbox:checked::after {
+          content: '';
+          width: 6px;
+          height: 10px;
+          border: solid #EEEEEE; /* light-text */
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+          margin-bottom: 2px;
+      }
+       /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+       /* Mobile Menu Styling */
+      #mobile-menu {
+        background-color: #393E46; /* dark-card */
+        border: 1px solid #222831; /* dark-bg */
+      }
+      #mobile-menu a {
+        color: #EEEEEE; /* light-text */
+      }
+      #mobile-menu a:hover {
+        color: #00ADB5; /* primary */
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-light-text">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-dark-bg border-b border-dark-card shadow-md">
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary"
+          >klitersik</a
+        >
+
+        <nav id="desktop-nav" class="hidden md:flex space-x-8">
+          <a
+            href="#about"
+            class="font-medium hover:text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="#expertise"
+            class="font-medium hover:text-primary transition-colors"
+            >Expertise</a
+          >
+          <a
+            href="#projects"
+            class="font-medium hover:text-primary transition-colors"
+            >Projects</a
+          >
+          <!-- Removed Services link -->
+          <a
+            href="#contact"
+            class="font-medium hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-light-text focus:outline-none">
+          <i class="ri-menu-line ri-lg"></i>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+       <div id="mobile-menu" class="hidden md:hidden absolute top-16 right-6 p-4 rounded shadow-lg flex flex-col space-y-2 z-40">
+          <a href="#about" class="block py-1 px-2 rounded hover:bg-dark-bg">About</a>
+          <a href="#expertise" class="block py-1 px-2 rounded hover:bg-dark-bg">Expertise</a>
+          <a href="#projects" class="block py-1 px-2 rounded hover:bg-dark-bg">Projects</a>
+          <a href="#contact" class="block py-1 px-2 rounded hover:bg-dark-bg">Contact</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative w-full min-h-[500px] md:min-h-[600px] flex items-center">
+       <!-- You might want a darker/more abstract image for dark mode -->
+      <div
+        style="background-image: url('https://public.readdy.ai/ai/img_res/e1e917b184e3ee91c787f01b18c08588.jpg'); background-size: cover; background-position: center;"
+        class="absolute inset-0 z-0 opacity-30"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-dark-bg via-dark-bg/90 to-transparent z-10"
+      ></div>
+
+      <div class="container mx-auto px-6 relative z-20 w-full">
+        <div class="max-w-2xl">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-light-text">
+            Automation & Web Scraping
+          </h1>
+          <p class="text-lg md:text-xl text-secondary-text mb-8">
+            Freelancer providing efficient web scraping, document processing, and automation solutions.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#contact"
+              class="bg-primary text-dark-bg px-8 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap"
+              >Get in Touch</a
+            >
+            <a
+              href="#projects"
+              class="border border-primary px-8 py-3 !rounded-button font-medium text-primary hover:bg-primary/10 transition-colors whitespace-nowrap"
+              >View My Work</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-card">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-12 items-center">
+          <div class="md:w-1/2">
+             <!-- Consider a different image or styling for dark mode -->
+            <img
+              src="https://public.readdy.ai/ai/img_res/c3d500055e86d7b7234ace56ad7ec1de.jpg"
+              alt="klitersik"
+              class="rounded-lg shadow-lg object-cover w-full h-auto border-4 border-dark-bg"
+            />
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold mb-6 text-light-text">About Me</h2>
+            <p class="text-secondary-text mb-4">
+              I'm a freelancer specializing in web scraping, with over 2 years of hands-on experience building custom data extraction tools. For the past year, I've also focused on developing automation solutions and streamlining document processing workflows.
+            </p>
+            <p class="text-secondary-text mb-6">
+              My approach combines technical skills with a focus on practical results, aiming to deliver efficient solutions that save time, reduce manual effort, and provide valuable data insights.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                >
+                  <i class="ri-code-s-slash-line ri-lg text-primary"></i>
+                </div>
+                <span class="font-medium text-light-text">Python Expert</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                >
+                  <i class="ri-database-2-line ri-lg text-primary"></i>
+                </div>
+                <span class="font-medium text-light-text">Web Scraping</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                >
+                  <i class="ri-file-text-line ri-lg text-primary"></i>
+                </div>
+                <span class="font-medium text-light-text">Doc Processing</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full"
+                >
+                  <i class="ri-robot-2-line ri-lg text-primary"></i>
+                </div>
+                <span class="font-medium text-light-text">Automation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-20 bg-dark-bg">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4 text-light-text">My Expertise</h2>
+          <p class="text-secondary-text max-w-2xl mx-auto">
+            Core skills and areas where I provide solutions.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card Example -->
+          <div
+            class="bg-dark-card p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-transparent hover:border-primary/30"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-spider-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-light-text">Web Scraping</h3>
+            <p class="text-secondary-text">
+              Building custom scrapers (Python, Selenium, Requests) to extract data from websites efficiently and reliably.
+            </p>
+          </div>
+
+           <div
+            class="bg-dark-card p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-transparent hover:border-primary/30"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-settings-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-light-text">Task Automation</h3>
+            <p class="text-secondary-text">
+              Creating scripts and bots to automate repetitive tasks, data entry, report generation, and more.
+            </p>
+          </div>
+
+          <div
+            class="bg-dark-card p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-transparent hover:border-primary/30"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-file-text-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-light-text">Document Processing</h3>
+            <p class="text-secondary-text">
+              Extracting structured data from PDFs and scanned documents using tools like Docparser and custom scripts.
+            </p>
+          </div>
+
+          <div
+            class="bg-dark-card p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-transparent hover:border-primary/30"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-database-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-light-text">Data Extraction & Cleaning</h3>
+            <p class="text-secondary-text">
+              Transforming raw scraped or extracted data into clean, organized, and usable formats (CSV, JSON, Database).
+            </p>
+          </div>
+
+           <div
+            class="bg-dark-card p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-transparent hover:border-primary/30"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-flow-chart ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-light-text">Process Optimization</h3>
+            <p class="text-secondary-text">
+              Analyzing manual workflows to identify opportunities for automation and efficiency improvements.
+            </p>
+          </div>
+
+          <div
+            class="bg-dark-card p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-transparent hover:border-primary/30"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-api-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-light-text">API Integration</h3>
+            <p class="text-secondary-text">
+              Connecting different software and services using APIs for seamless data flow and automated actions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-dark-card">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4 text-light-text">Featured Projects</h2>
+          <p class="text-secondary-text max-w-2xl mx-auto">
+            Examples of solutions I've built.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Project 1: Twitter Scraper -->
+          <div
+            class="bg-dark-bg border border-dark-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+          >
+            <img
+              src="https://public.readdy.ai/ai/img_res/5bf33b0aa6ac8e79f5f803ef964e81f5.jpg" <!-- Placeholder Image -->
+              alt="Twitter Scraper Project"
+              class="w-full h-48 object-cover object-center opacity-80"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-light-text">Twitter User Scraper</h3>
+              <p class="text-secondary-text mb-4">
+                Developed a Python script to scrape the latest tweets from specified user profiles. Utilized Selenium for initial login and cookie retrieval, then performed direct requests for efficient data fetching, bypassing UI limitations.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
+                  >Python</span
+                >
+                <span
+                  class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
+                  >Selenium</span
+                >
+                 <span
+                  class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
+                  >Requests</span
+                >
+                <span
+                  class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
+                  >Web Scraping</span
+                >
+              </div>
+               <div class="text-sm text-secondary-text">
+                <p>
+                  <strong>Result:</strong> Provided clients with timely data feeds from key Twitter accounts for analysis and monitoring.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Docparser Automation -->
+          <div
+            class="bg-dark-bg border border-dark-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+          >
+            <img
+              src="https://public.readdy.ai/ai/img_res/d68224a1c4546360213a8fb48dfdae50.jpg" <!-- Placeholder Image -->
+              alt="Document Processing Project"
+              class="w-full h-48 object-cover object-center opacity-80"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-light-text">Document Processing with Docparser</h3>
+              <p class="text-secondary-text mb-4">
+                Automated the extraction of structured data from various document types (PDFs, scanned invoices, forms) using the Docparser platform and its API. Configured parsing rules and integrated the extracted data into client databases or spreadsheets.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                 <span
+                  class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
+                  >Docparser</span
+                >
+                <span
+                  class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
+                  >API Integration</span
+                >
+                <span
+                  class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
+                  >Python</span
+                >
+                <span
+                  class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
+                  >Automation</span
+                >
+                 <span
+                  class="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
+                  >Data Extraction</span
+                >
+              </div>
+               <div class="text-sm text-secondary-text">
+                <p>
+                  <strong>Result:</strong> Significantly reduced manual data entry time by over 90% and improved data accuracy for invoice processing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Stack -->
+    <section class="py-20 bg-dark-bg">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4 text-light-text">Technical Stack</h2>
+          <p class="text-secondary-text max-w-2xl mx-auto">
+            Key technologies and tools I frequently use.
+          </p>
+        </div>
+
+        <!-- Changed grid to md:grid-cols-3 -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div class="bg-dark-card p-6 rounded-lg shadow-md text-center border border-transparent hover:border-primary/30 transition-all">
+            <div
+              class="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-primary"
+            >
+              <i class="ri-python-line ri-3x"></i>
+            </div>
+            <h3 class="font-bold text-light-text">Python</h3>
+          </div>
+
+          <div class="bg-dark-card p-6 rounded-lg shadow-md text-center border border-transparent hover:border-primary/30 transition-all">
+            <div
+              class="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-primary"
+            >
+              <i class="ri-javascript-line ri-3x"></i>
+            </div>
+            <h3 class="font-bold text-light-text">JavaScript</h3>
+          </div>
+
+          <div class="bg-dark-card p-6 rounded-lg shadow-md text-center border border-transparent hover:border-primary/30 transition-all">
+            <div
+              class="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-primary"
+            >
+              <i class="ri-database-2-line ri-3x"></i>
+            </div>
+            <h3 class="font-bold text-light-text">SQL/NoSQL</h3>
+          </div>
+
+          <div class="bg-dark-card p-6 rounded-lg shadow-md text-center border border-transparent hover:border-primary/30 transition-all">
+            <div
+              class="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-primary"
+            >
+              <i class="ri-chrome-line ri-3x"></i>
+            </div>
+            <h3 class="font-bold text-light-text">Selenium</h3>
+          </div>
+
+          <div class="bg-dark-card p-6 rounded-lg shadow-md text-center border border-transparent hover:border-primary/30 transition-all">
+            <div
+              class="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-primary"
+            >
+             <i class="ri-links-line ri-3x"></i> <!-- Changed icon slightly -->
+            </div>
+            <h3 class="font-bold text-light-text">Requests/Scrapy</h3>
+          </div>
+
+          <div class="bg-dark-card p-6 rounded-lg shadow-md text-center border border-transparent hover:border-primary/30 transition-all">
+            <div
+              class="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-primary"
+            >
+              <i class="ri-api-line ri-3x"></i>
+            </div>
+            <h3 class="font-bold text-light-text">APIs (REST)</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact Section (Replaced Form with Social Links) -->
+    <section id="contact" class="py-20 bg-dark-card">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 text-light-text">Get in Touch</h2>
+          <p class="text-secondary-text max-w-xl mx-auto">
+            Connect with me on your preferred platform. Let's discuss how automation or web scraping can help you.
+          </p>
+        </div>
+
+        <div class="flex justify-center items-center gap-6 md:gap-8">
+            <!-- Discord -->
+            <a
+              href="x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Discord"
+              class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-dark-bg text-secondary-text rounded-full shadow-md hover:text-primary hover:bg-dark-bg/80 transition-all duration-300 transform hover:scale-110"
+            >
+              <i class="ri-discord-fill ri-2x"></i>
+            </a>
+             <!-- GitHub -->
+            <a
+              href="x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GitHub"
+              class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-dark-bg text-secondary-text rounded-full shadow-md hover:text-primary hover:bg-dark-bg/80 transition-all duration-300 transform hover:scale-110"
+            >
+              <i class="ri-github-fill ri-2x"></i>
+            </a>
+             <!-- LinkedIn -->
+            <a
+              href="x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LinkedIn"
+              class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-dark-bg text-secondary-text rounded-full shadow-md hover:text-primary hover:bg-dark-bg/80 transition-all duration-300 transform hover:scale-110"
+            >
+              <i class="ri-linkedin-fill ri-2x"></i>
+            </a>
+             <!-- Twitter (X) -->
+            <a
+              href="x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Twitter / X"
+              class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-dark-bg text-secondary-text rounded-full shadow-md hover:text-primary hover:bg-dark-bg/80 transition-all duration-300 transform hover:scale-110"
+            >
+              <i class="ri-twitter-x-fill ri-2x"></i>
+            </a>
+         </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg text-secondary-text py-10 border-t border-dark-card">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-8">
+          <div class="mb-6 md:mb-0 text-center md:text-left">
+            <a
+              href="#"
+              class="text-2xl font-['Pacifico'] text-primary mb-2 inline-block"
+              >klitersik</a
+            >
+            <p class="text-sm max-w-xs">
+              Freelance automation and web scraping services.
+            </p>
+          </div>
+
+          <!-- Simplified Footer Links -->
+          <div class="text-center md:text-right mb-6 md:mb-0">
+             <h4 class="font-semibold text-light-text mb-3">Quick Links</h4>
+              <ul class="space-y-1">
+                <li>
+                  <a
+                    href="#about"
+                    class="hover:text-primary transition-colors"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#expertise"
+                    class="hover:text-primary transition-colors"
+                    >Expertise</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#projects"
+                    class="hover:text-primary transition-colors"
+                    >Projects</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    class="hover:text-primary transition-colors"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+          </div>
+        </div>
+
+        <div
+          class="pt-6 border-t border-dark-card flex flex-col sm:flex-row justify-between items-center"
+        >
+          <p class="text-sm mb-4 sm:mb-0">
+            © 2024 klitersik. All rights reserved.
+          </p>
+
+          <!-- Footer Social Icons -->
+          <div class="flex gap-5">
+             <a href="#" title="Discord" class="hover:text-primary transition-colors"> <i class="ri-discord-fill"></i> </a>
+            <a href="#" title="GitHub" class="hover:text-primary transition-colors"> <i class="ri-github-fill"></i> </a>
+            <a href="#" title="LinkedIn" class="hover:text-primary transition-colors"> <i class="ri-linkedin-fill"></i> </a>
+            <a href="#" title="Twitter / X" class="hover:text-primary transition-colors"> <i class="ri-twitter-x-fill"></i> </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const menuButton = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const desktopNav = document.getElementById("desktop-nav"); // To potentially hide links if menu open
+
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        // Optional: Add class to body to prevent scrolling when menu is open
+        // document.body.classList.toggle('overflow-hidden');
+      });
+
+       // Close mobile menu if clicking outside of it or on a link
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnButton = menuButton.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
+                 mobileMenu.classList.add('hidden');
+                 // document.body.classList.remove('overflow-hidden');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+                 // document.body.classList.remove('overflow-hidden');
+            });
+        });
+
+
+      // Smooth scrolling for anchor links (already handled by CSS html { scroll-behavior: smooth; })
+      // If CSS method isn't sufficient, uncomment this JS version:
+      /*
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+              // Calculate offset for sticky header if needed
+              const headerOffset = document.querySelector('header').offsetHeight || 70; // Adjust if header height changes
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth",
+              });
+
+              // Close mobile menu if open after clicking a link
+              if (!mobileMenu.classList.contains('hidden')) {
+                 mobileMenu.classList.add('hidden');
+                 // document.body.classList.remove('overflow-hidden');
+              }
+          }
+        });
+      });
+      */
+    </script>
+  </body>
 </html>
