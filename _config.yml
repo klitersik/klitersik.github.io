@@ -2,5 +2,3 @@ title: My Website
 description: Personal website and blog
 baseurl: ""
 url: "https://klitersik.github.io"
-
-remote_theme: mmistakes/minimal-mistakes
