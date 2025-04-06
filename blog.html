@@ -1,13 +1,275 @@
----
-title: Blog
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - klitersik</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              // New Dark Palette from index.html
+              primary: "#00ADB5", // Teal accent
+              'dark-bg': "#222831", // Deep dark background
+              'dark-card': "#393E46", // Lighter dark for cards/sections
+              'light-text': "#EEEEEE", // Light text
+              'secondary-text': "#adb5bd", // Slightly dimmer text
+              secondary: "#393E46", // Keep for compatibility or specific use
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <style>
+      body {
+          font-family: 'Inter', sans-serif;
+      }
+       /* Mobile Menu Styling */
+      #mobile-menu {
+        background-color: #393E46; /* dark-card */
+        border: 1px solid #222831; /* dark-bg */
+      }
+      #mobile-menu a {
+        color: #EEEEEE; /* light-text */
+      }
+      #mobile-menu a:hover {
+        color: #00ADB5; /* primary */
+      }
+      /* Ensure smooth scroll isn't needed here, but keep consistent */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-light-text">
+    {% raw %}
+    <!-- Header (Copied from index.html for consistency) -->
+    <header class="sticky top-0 z-50 bg-dark-bg border-b border-dark-card shadow-md">
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="text-2xl font-['Pacifico'] text-primary"
+          >klitersik</a
+        >
 
-<h1>Blog Posts</h1>
+        <nav id="desktop-nav" class="hidden md:flex space-x-8">
+          <a
+            href="index.html#about"
+            class="font-medium hover:text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="index.html#expertise"
+            class="font-medium hover:text-primary transition-colors"
+            >Expertise</a
+          >
+          <a
+            href="index.html#projects"
+            class="font-medium hover:text-primary transition-colors"
+            >Projects</a
+          >
+          <a
+            href="index.html#contact"
+            class="font-medium hover:text-primary transition-colors"
+            >Contact</a
+          >
+          <a
+            href="blog.html"
+            class="font-medium text-primary" <!-- Active link style -->
+            >Blog</a
+          >
+          <a href="index_pl.html" class="ml-4 px-3 py-1 border border-primary rounded-button text-primary hover:bg-primary/10 transition-colors text-sm">PL</a>
+        </nav>
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-light-text focus:outline-none">
+          <i class="ri-menu-line ri-lg"></i>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+       <div id="mobile-menu" class="hidden md:hidden absolute top-16 right-6 p-4 rounded shadow-lg flex flex-col space-y-2 z-40">
+          <a href="index.html#about" class="block py-1 px-2 rounded hover:bg-dark-bg">About</a>
+          <a href="index.html#expertise" class="block py-1 px-2 rounded hover:bg-dark-bg">Expertise</a>
+          <a href="index.html#projects" class="block py-1 px-2 rounded hover:bg-dark-bg">Projects</a>
+          <a href="index.html#contact" class="block py-1 px-2 rounded hover:bg-dark-bg">Contact</a>
+          <a href="blog.html" class="block py-1 px-2 rounded hover:bg-dark-bg text-primary">Blog</a> <!-- Active link style -->
+          <a href="index_pl.html" class="block py-1 px-2 rounded hover:bg-dark-bg text-primary border border-primary mt-2 text-center">Polski</a>
+      </div>
+    </header>
+
+    <!-- Main Blog Content -->
+    <main class="container mx-auto px-6 py-16">
+        <h1 class="text-4xl font-bold mb-12 text-center text-light-text">Blog</h1>
+
+        <div class="space-y-12 max-w-3xl mx-auto">
+            {% for post in paginator.posts %}
+            <article class="bg-dark-card p-6 md:p-8 rounded-lg shadow-md border border-dark-bg hover:border-primary/30 transition-colors">
+                <h2 class="text-2xl font-bold mb-2">
+                    <a href="{{ post.url | relative_url }}" class="text-light-text hover:text-primary transition-colors">{{ post.title }}</a>
+                </h2>
+                <p class="text-sm text-secondary-text mb-4">
+                    {{ post.date | date: "%B %d, %Y" }}
+                </p>
+                <div class="text-secondary-text prose prose-invert max-w-none">
+                    {{ post.excerpt }}
+                </div>
+                 <a href="{{ post.url | relative_url }}" class="inline-block mt-4 text-primary hover:underline">Read more &rarr;</a>
+            </article>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if paginator.total_pages > 1 %}
+        <div class="flex justify-between items-center mt-16 max-w-3xl mx-auto text-secondary-text">
+            {% if paginator.previous_page %}
+                <a href="{{ paginator.previous_page_path | relative_url }}" class="px-4 py-2 border border-dark-card rounded-button hover:border-primary hover:text-primary transition-colors">&larr; Newer Posts</a>
+            {% else %}
+                <span class="px-4 py-2 border border-dark-card rounded-button text-gray-600 cursor-not-allowed">&larr; Newer Posts</span>
+            {% endif %}
+
+            <span class="text-sm">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+
+            {% if paginator.next_page %}
+                <a href="{{ paginator.next_page_path | relative_url }}" class="px-4 py-2 border border-dark-card rounded-button hover:border-primary hover:text-primary transition-colors">Older Posts &rarr;</a>
+            {% else %}
+                <span class="px-4 py-2 border border-dark-card rounded-button text-gray-600 cursor-not-allowed">Older Posts &rarr;</span>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </main>
+
+    <!-- Footer (Copied from index.html for consistency) -->
+    <footer class="bg-dark-bg text-secondary-text py-10 border-t border-dark-card mt-16">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-8">
+          <div class="mb-6 md:mb-0 text-center md:text-left">
+            <a
+              href="index.html"
+              class="text-2xl font-['Pacifico'] text-primary mb-2 inline-block"
+              >klitersik</a
+            >
+            <p class="text-sm max-w-xs">
+              Freelance automation and web scraping services.
+            </p>
+          </div>
+
+          <!-- Simplified Footer Links -->
+          <div class="text-center md:text-right mb-6 md:mb-0">
+             <h4 class="font-semibold text-light-text mb-3">Quick Links</h4>
+              <ul class="space-y-1">
+                <li>
+                  <a
+                    href="index.html#about"
+                    class="hover:text-primary transition-colors"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html#expertise"
+                    class="hover:text-primary transition-colors"
+                    >Expertise</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html#projects"
+                    class="hover:text-primary transition-colors"
+                    >Projects</a
+                  >
+                </li>
+                 <li>
+                  <a
+                    href="blog.html"
+                    class="hover:text-primary transition-colors"
+                    >Blog</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html#contact"
+                    class="hover:text-primary transition-colors"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+          </div>
+        </div>
+
+        <div
+          class="pt-6 border-t border-dark-card flex flex-col sm:flex-row justify-between items-center"
+        >
+          <p class="text-sm mb-4 sm:mb-0">
+            © 2024 klitersik. All rights reserved.
+          </p>
+
+          <!-- Footer Social Icons -->
+          <div class="flex gap-5">
+             <a href="https://discord.com/users/329954294927327233" title="Discord" class="hover:text-primary transition-colors"> <i class="ri-discord-fill"></i> </a>
+            <a href="https://github.com/klitersik" title="GitHub" class="hover:text-primary transition-colors"> <i class="ri-github-fill"></i> </a>
+            <a href="https://www.linkedin.com/in/maciej-pal-ab6926154/" title="LinkedIn" class="hover:text-primary transition-colors"> <i class="ri-linkedin-fill"></i> </a>
+            <a href="https://x.com/klitersik2" title="Twitter / X" class="hover:text-primary transition-colors"> <i class="ri-twitter-x-fill"></i> </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle (Copied from index.html)
+      const menuButton = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+       // Close mobile menu if clicking outside of it or on a link
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnButton = menuButton.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
+                 mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+    {% endraw %}
+  </body>
+</html>
