@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mój Pierwszy Wpis - klitersik</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00ADB5",
+              'dark-bg': "#222831",
+              'dark-card': "#393E46",
+              'light-text': "#EEEEEE",
+              'secondary-text': "#adb5bd",
+              secondary: "#393E46",
+            },
+            borderRadius: {
+              none: "0px", sm: "4px", DEFAULT: "8px", md: "12px", lg: "16px", xl: "20px", "2xl": "24px", "3xl": "32px", full: "9999px", button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      html { scroll-behavior: smooth; }
+      #mobile-menu { background-color: #393E46; border: 1px solid #222831; }
+      #mobile-menu a { color: #EEEEEE; }
+      #mobile-menu a:hover { color: #00ADB5; }
+      .prose { color: #EEEEEE; } /* Basic prose styling for light text */
+      .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 { color: #EEEEEE; }
+      .prose a { color: #00ADB5; }
+      .prose strong { color: #EEEEEE; }
+      .prose blockquote { border-left-color: #00ADB5; color: #adb5bd;}
+      .prose code { color: #00ADB5; background-color: #222831; padding: 0.2em 0.4em; border-radius: 4px;}
+      .prose pre { background-color: #222831; padding: 1em; border-radius: 8px; overflow-x: auto;}
+      .prose pre code { background-color: transparent; padding: 0; }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-light-text">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-dark-bg border-b border-dark-card shadow-md">
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index_pl.html" class="text-2xl font-['Pacifico'] text-primary">klitersik</a>
+        <nav id="desktop-nav" class="hidden md:flex space-x-8">
+          <a href="../index_pl.html#about" class="font-medium hover:text-primary transition-colors">O mnie</a>
+          <a href="../index_pl.html#expertise" class="font-medium hover:text-primary transition-colors">Ekspertyza</a>
+          <a href="../index_pl.html#projects" class="font-medium hover:text-primary transition-colors">Projekty</a>
+          <a href="../index_pl.html#contact" class="font-medium hover:text-primary transition-colors">Kontakt</a>
+          <a href="../blog.html" class="font-medium text-primary transition-colors">Blog</a>
+          <!-- <a href="../index.html" class="ml-4 px-3 py-1 border border-primary rounded-button text-primary hover:bg-primary/10 transition-colors text-sm">EN</a> -->
+        </nav>
+        <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-light-text focus:outline-none"><i class="ri-menu-line ri-lg"></i></button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden absolute top-16 right-6 p-4 rounded shadow-lg flex flex-col space-y-2 z-40">
+        <a href="../index_pl.html#about" class="block py-1 px-2 rounded hover:bg-dark-bg">O mnie</a>
+        <a href="../index_pl.html#expertise" class="block py-1 px-2 rounded hover:bg-dark-bg">Ekspertyza</a>
+        <a href="../index_pl.html#projects" class="block py-1 px-2 rounded hover:bg-dark-bg">Projekty</a>
+        <a href="../index_pl.html#contact" class="block py-1 px-2 rounded hover:bg-dark-bg">Kontakt</a>
+        <a href="../blog.html" class="block py-1 px-2 rounded hover:bg-dark-bg text-primary">Blog</a>
+        <!-- <a href="../index.html" class="block py-1 px-2 rounded hover:bg-dark-bg text-primary border border-primary mt-2 text-center">English</a> -->
+      </div>
+    </header>
+
+    <!-- Post Content Section -->
+    <main class="py-12 md:py-20 bg-dark-bg">
+      <div class="container mx-auto px-6">
+        <article class="prose prose-lg lg:prose-xl max-w-3xl mx-auto bg-dark-card p-6 md:p-10 rounded-lg shadow-lg">
+          <a href="../blog.html" class="inline-block mb-6 text-primary hover:underline">&larr; Wróć do Bloga</a>
+          <h1>Mój Pierwszy Wpis na Blogu</h1>
+          <p class="text-secondary-text text-sm">Opublikowano: 9 maja 2025</p>
+          
+          <p>To jest pełna treść mojego pierwszego wpisu na blogu. Jest to świetne miejsce do dzielenia się szczegółowymi przemyśleniami, tutorialami lub aktualizacjami.</p>
+          <p>Możesz tutaj używać różnych elementów HTML, takich jak akapity, nagłówki, listy, obrazy itp., aby strukturyzować swoją treść.</p>
+          <h2>Podtytuł</h2>
+          <p>Więcej szczegółów pod podtytułem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <ul>
+            <li>Element listy pierwszy</li>
+            <li>Element listy drugi</li>
+            <li>Element listy trzeci</li>
+          </ul>
+          <pre><code>// Przykładowy blok kodu
+function przywitaj(imie) {
+  console.log("Witaj, " + imie + "!");
+}
+przywitaj("Świecie");</code></pre>
+          <p>Możesz dowolnie rozbudować tę treść!</p>
+        </article>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg text-secondary-text py-10 border-t border-dark-card">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-8">
+          <div class="mb-6 md:mb-0 text-center md:text-left">
+            <a href="../index_pl.html" class="text-2xl font-['Pacifico'] text-primary mb-2 inline-block">klitersik</a>
+            <p class="text-sm max-w-xs">Freelancer specjalizujący się w automatyzacji i web scrapingu.</p>
+          </div>
+          <div class="text-center md:text-right mb-6 md:mb-0">
+            <h4 class="font-semibold text-light-text mb-3">Szybkie Linki</h4>
+            <ul class="space-y-1">
+              <li><a href="../index_pl.html#about" class="hover:text-primary transition-colors">O mnie</a></li>
+              <li><a href="../index_pl.html#expertise" class="hover:text-primary transition-colors">Ekspertyza</a></li>
+              <li><a href="../index_pl.html#projects" class="hover:text-primary transition-colors">Projekty</a></li>
+              <li><a href="../index_pl.html#contact" class="hover:text-primary transition-colors">Kontakt</a></li>
+              <li><a href="../blog.html" class="hover:text-primary transition-colors">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-6 border-t border-dark-card flex flex-col sm:flex-row justify-between items-center">
+          <p class="text-sm mb-4 sm:mb-0">© 2024 klitersik. Wszelkie prawa zastrzeżone.</p>
+          <div class="flex gap-5">
+            <a href="https://discord.com/users/329954294927327233" title="Discord" class="hover:text-primary transition-colors"><i class="ri-discord-fill"></i></a>
+            <a href="https://github.com/klitersik" title="GitHub" class="hover:text-primary transition-colors"><i class="ri-github-fill"></i></a>
+            <a href="https://www.linkedin.com/in/maciej-pal-ab6926154/" title="LinkedIn" class="hover:text-primary transition-colors"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://x.com/klitersik2" title="Twitter / X" class="hover:text-primary transition-colors"><i class="ri-twitter-x-fill"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuButton = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuButton.addEventListener("click", () => { mobileMenu.classList.toggle("hidden"); });
+      document.addEventListener('click', function(event) {
+        const isClickInsideMenu = mobileMenu.contains(event.target);
+        const isClickOnButton = menuButton.contains(event.target);
+        if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); });
+      });
+    </script>
+  </body>
+</html>
