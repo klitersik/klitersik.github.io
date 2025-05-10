@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pełna treść mojego pierwszego wpisu na blogu. Dowiedz się więcej o moich przemyśleniach i aktualizacjach.">
     <title>Mój Pierwszy Wpis - klitersik</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
@@ -29,6 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
     <style>
       body { font-family: 'Inter', sans-serif; }
@@ -78,6 +80,7 @@
           <a href="../blog.html" class="inline-block mb-6 text-primary hover:underline">&larr; Wróć do Bloga</a>
           <h1>Mój Pierwszy Wpis na Blogu</h1>
           <p class="text-secondary-text text-sm">Opublikowano: 9 maja 2025</p>
+          <img src="../images/posts/sample-post-1.jpg" alt="Mój Pierwszy Wpis na Blogu" class="rounded-lg my-6 w-full object-cover" style="max-height: 400px;">
           
           <p>To jest pełna treść mojego pierwszego wpisu na blogu. Jest to świetne miejsce do dzielenia się szczegółowymi przemyśleniami, tutorialami lub aktualizacjami.</p>
           <p>Możesz tutaj używać różnych elementów HTML, takich jak akapity, nagłówki, listy, obrazy itp., aby strukturyzować swoją treść.</p>
@@ -88,7 +91,7 @@
             <li>Element listy drugi</li>
             <li>Element listy trzeci</li>
           </ul>
-          <pre><code>// Przykładowy blok kodu
+          <pre><code class="language-javascript">// Przykładowy blok kodu
 function przywitaj(imie) {
   console.log("Witaj, " + imie + "!");
 }
@@ -144,5 +147,7 @@ przywitaj("Świecie");</code></pre>
         link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); });
       });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

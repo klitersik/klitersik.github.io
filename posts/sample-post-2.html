@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Drugi przykładowy wpis na blogu, pokazujący strukturę i możliwości stylizacji treści na stronie klitersik.">
     <title>Inny Ciekawy Artykuł - klitersik</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
@@ -29,6 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
     <style>
       body { font-family: 'Inter', sans-serif; }
@@ -78,6 +80,7 @@
           <a href="../blog.html" class="inline-block mb-6 text-primary hover:underline">&larr; Wróć do Bloga</a>
           <h1>Inny Ciekawy Artykuł</h1>
           <p class="text-secondary-text text-sm">Opublikowano: 10 maja 2025</p>
+          <img src="../images/posts/sample-post-2.jpg" alt="Inny Ciekawy Artykuł" class="rounded-lg my-6 w-full object-cover" style="max-height: 400px;">
           
           <p>To jest główna treść drugiego przykładowego wpisu. Pokazuje, jak będą wyglądać poszczególne posty.</p>
           <p>Treść może być stylizowana za pomocą wtyczki typograficznej Tailwind (klasy prose) lub niestandardowych stylów w razie potrzeby.</p>
@@ -133,5 +136,7 @@
         link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); });
       });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

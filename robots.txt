@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://klitersik.github.io/sitemap.xml

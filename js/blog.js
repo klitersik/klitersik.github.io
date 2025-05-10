@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     recentPosts.forEach(post => {
       const postElement = `
         <a href="${post.filePath}" class="block bg-dark-card p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-transparent hover:border-primary/30">
+          ${post.imageSrc ? `<img src="${post.imageSrc}" alt="${post.title}" class="rounded-md mb-4 w-full h-48 object-cover">` : ''}
           <h3 class="text-xl font-bold mb-2 text-light-text">${post.title}</h3>
           <p class="text-sm text-secondary-text mb-3">${new Date(post.date).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
           <p class="text-secondary-text text-sm">${post.summary}</p>
